@@ -22,6 +22,13 @@ public class RemindersActivity extends AppCompatActivity {
         mListView.setDivider(null);
         mDbAdapter=new RemindersDbAdapter(this);
         mDbAdapter.open();
+        if(savedInstanceState==null)
+        {
+            //Clear all data
+            mDbAdapter.deletellReminders();
+            //Add some data
+            insertSomeReminders();
+        }
 
         Cursor cursor=mDbAdapter.fetchAllReminders();
 
@@ -43,6 +50,24 @@ public class RemindersActivity extends AppCompatActivity {
 
         //the cursorAdapter(controller) is now updating the listView(view) with data from the db (model)
         mListView.setAdapter(mCursordapter);
+    }
+
+    private void insertSomeReminders() {
+        mDbAdapter.createReminder("Buy Learn Android",true);
+        mDbAdapter.createReminder("Send Dad birthday gift",false);
+        mDbAdapter.createReminder("Dinner at the Gage on Friday",false);
+        mDbAdapter.createReminder("String squash racket",false);
+        mDbAdapter.createReminder("Shovel and salt walkways",false);
+        mDbAdapter.createReminder("Prepare Advanced Android syllabus",true);
+        mDbAdapter.createReminder("Buy new office chair",false);
+        mDbAdapter.createReminder("Call Auto-body shop for quote",false);
+        mDbAdapter.createReminder("Renew membership to club",false);
+        mDbAdapter.createReminder("Buy new Galasy Android phone",true);
+        mDbAdapter.createReminder("Sell old Android phone - auction",false);
+        mDbAdapter.createReminder("Buy new paddles for kayaks",false);
+        mDbAdapter.createReminder("Call accountant about tax returns",false);
+        mDbAdapter.createReminder("Buy 300,000 shares of Google",false);
+        mDbAdapter.createReminder("Call the Dalai Lama back",true);
     }
     //Reminder of the class listing omitted for brevity
 
