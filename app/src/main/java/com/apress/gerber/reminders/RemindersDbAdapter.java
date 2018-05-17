@@ -72,7 +72,7 @@ public class RemindersDbAdapter {
         return mDb.insert(TABLE_NAME,null,values);
     }
     //READ
-    public Reminder FetchReminderById(int id)
+    public Reminder fetchReminderById(int id)
     {
         Cursor cursor=mDb.query(TABLE_NAME,new String[]{COL_ID,COL_CONTENT,COL_IMPORTNT},COL_ID+"=?",
                 new String[]{String.valueOf(id)},null,null,null,null);
